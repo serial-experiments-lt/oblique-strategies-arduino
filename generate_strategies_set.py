@@ -25,6 +25,4 @@ if __name__ == '__main__':
 		# end array
 		new_file.write(r'};' + '\n')
 		new_file.close()
-	
 	exit()
-

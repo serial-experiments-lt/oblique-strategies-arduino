@@ -26,8 +26,8 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 int gPromptCounter = 0;
 int gScrollCounter = 0;
-const int gPromptMillis = 60*60*1000; // strategy refreshes every hour
-const int gScrollCounterMax = 200; // scroll every 200ms
+const int gPromptMillis = 60 * 60 * 1000;  // strategy refreshes every hour
+const int gScrollCounterMax = 200;         // scroll every 200ms
 
 int gCurrentPromptLength;
 int gFirstCharTop = 0;
@@ -38,12 +38,9 @@ int gLCD_Length = 16;
 int gNumOfLines = 0;
 int gOffsetLines = 0;
 
-
-
 unsigned int gCurrentIdx = 0;
 
 void setup() {
-
   // set up the LCD's number of columns and rows:
   lcd.begin(gLCD_Length, 2);
 }
@@ -51,7 +48,6 @@ void setup() {
 void loop() {
   gCurrentPromptLength = strategies[gCurrentIdx].length();
   gNumOfLines = (gCurrentPromptLength / gLCD_Length) + 1;
-
 
   if (gNumOfLines == 1) {
     gFirstCharTop = gOffsetLines * gLCD_Length;
@@ -70,12 +66,10 @@ void loop() {
     gLastCharBottom = gOffsetLines * gLCD_Length + 2 * gLCD_Length;
   }
 
-
   lcd.setCursor(0, 0);
   lcd.print(strategies[gCurrentIdx].substring(gFirstCharTop, gLastCharTop));
   lcd.setCursor(0, 1);
   lcd.print(strategies[gCurrentIdx].substring(gFirstCharBottom, gLastCharBottom));
-
 
   if (++gScrollCounter >= gScrollCounterMax) {
     gScrollCounter = 0;
@@ -89,6 +83,6 @@ void loop() {
   if (millis() > (gPromptCounter * gPromptMillis)) {
     gPromptCounter++;
     lcd.clear();
-    gCurrentIdx = (gCurrentIdx + 1) % (sizeof(strategies)/sizeof(strategies[0]));
+    gCurrentIdx = (gCurrentIdx + 1) % (sizeof(strategies) / sizeof(strategies[0]));
   }
 }
