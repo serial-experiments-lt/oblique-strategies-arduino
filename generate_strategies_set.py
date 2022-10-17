@@ -4,7 +4,7 @@ import random
 
 if __name__ == '__main__':
 	# load text file
-	strategies = open('OBLIQUE.txt', 'r').readlines()
+	strategies = open('oblique.txt', 'r').readlines()
 	for i in range(len(strategies)):
 		strategies[i] = strategies[i].split('\n')[0]
 	# shuffle
@@ -19,7 +19,7 @@ if __name__ == '__main__':
 		new_file.write('\n')
 		# start array
 		new_file.write(r'String strategies[] = {' + '\n')
-		# loop over subset	
+		# loop over subset
 		for strategy in selection:
 			new_file.write(f'	"{strategy}",' + '\n')
 		# end array
